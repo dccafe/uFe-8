@@ -14,28 +14,27 @@ The CPU holds 4 registers R0 to R3.
 ## Instruction SET
 An instruction is 8 bit wide, and comprised of 3-bit opcode, 1-bit to encode an immediate (constant) in the instruction stack (ROM), 2-bits to encode both source and destination operands. 
 
-OP + CTE + SRC + DST
-3  +  1  +  2  +  2
+Instruction fields
+| opcode (3 bits) | cte (1 bit) | src (2 bits) | dst (2 bits) |
+|        ---      |     ---     |      ---     |      ---     |
 
-// Arithmetic and Logic Operations
-000 c ss dd | ADD   Rs/#i, Rd
-001 c ss dd | AND   Rs/#i, Rd
-010 c ss dd | XOR   Rs/#i, Rd
-011 c ss dd |  OR   Rs/#i, Rd
+If `cte = 1`, then the instruction composed of 2 bytes. The first byte
+is the instruction, the second is the constant
 
-// Memory Access (Load, Store)
-100 0 ss dd | LD   @Rs, Rd 
-101 c ss dd | ST    Rs/#i, @Rd
 
-// Data manipulation
-110 0 ss dd | MOV   Rs, Rd
-110 1 00 dd | MOV   #i, Rd 
-
-// Jumps (actually branches. These are absolute, not relative)
-111 1 11 00 | JC    addr
-111 1 11 01 | JZ    addr
-111 1 11 10 | JNZ   addr
-111 1 11 11 | JMP   addr
+| Instruction | Syntax | Description | 
+|     ---     |   ---  |     ---     |
+| `000 c ss dd` | `ADD   Rs/#i,  Rd` | Rd += Rs | 
+| `001 c ss dd` | `AND   Rs/#i,  Rd` | Rd &= Rs |
+| `010 c ss dd` | `XOR   Rs/#i,  Rd` | Rd ^= Rs |
+| `011 c ss dd` | ` OR   Rs/#i,  Rd` | Rd |= Rs | 
+| `100 0 ss dd` | `LD   @Rs/@i,  Rd` | Rd = data from bus addr Rs or i  | 
+| `101 c ss dd` | `ST    Rs/#i, @Rd` | Source is written to bus addr Rd |
+| `110 c ss dd` | `MOV   Rs/#i,  Rd` | Rd = Rs | 
+| `111 1 11 00` | `JC    addr`       | PC = addr, if C = 1 |
+| `111 1 11 01` | `JZ    addr`       | PC = addr, if Z = 1 |
+| `111 1 11 10` | `JNZ   addr`       | PC = addr, if Z = 0 |
+| `111 1 11 11` | `JMP   addr`       | PC = addr, always   |
 
 # Simulator
 There is a logisim version of the CPU 
