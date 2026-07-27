@@ -7,7 +7,7 @@ MAKEFLAGS += --no-print-directory
 .PHONY: uvm sim clean 
 
 TOP  := cpu_tb
-VLOG := $(wildcard rtl/*.sv  tb/*.sv)
+VLOG := $(wildcard rtl/*.sv  tb/sim/*.sv)
 VHDL := $(wildcard rtl/*.vhd tb/*.vhd)
 UVM  := $(wildcard tb/uvm/*.sv)
 
@@ -26,7 +26,7 @@ sim: build/simv
 
 sim_syn: syn/mapped.1.v
 	cd build && vcs -full64 -sverilog \
-	../tb/cpu_tb.sv \
+	../tb/syn/cpu_tb.sv \
 	../syn/mapped.1.v \
 	/opt/synopsys/saed/32-edk/lib/stdcell_rvt/verilog/saed32nm.v \
 	-override_timescale=1ns/1ns \
