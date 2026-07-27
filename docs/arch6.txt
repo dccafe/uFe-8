@@ -1,0 +1,23 @@
+Instrução: 
+OP + CTE + SRC + DST
+3  +  1  +  2  +  2
+
+// Operações aritiméticas e lógicas
+000 c ss dd | ADD   Rs/#i, Rd
+001 c ss dd | AND   Rs/#i, Rd
+010 c ss dd | XOR   Rs/#i, Rd
+011 c ss dd |  OR   Rs/#i, Rd
+
+// Acesso à memória (Load e store)
+100 0 ss dd | LD   @Rs, Rd 
+101 c ss dd | ST    Rs/#i, @Rd
+
+// Movimentação de dados
+110 0 ss dd | MOV   Rs, Rd
+110 1 00 dd | MOV   #i, Rd 
+
+// Saltos
+111 1 11 00 | JC    addr
+111 1 11 01 | JZ    addr
+111 1 11 10 | JNZ   addr
+111 1 11 11 | JMP   addr

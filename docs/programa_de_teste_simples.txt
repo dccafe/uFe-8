@@ -1,0 +1,44 @@
+mult: 
+00:	MOV #4, R2		(D2, 04)	// Args: R2 x R3 
+02:	MOV #3, R3		(D3, 03)
+
+04:	MOV #0, R0		(D0, 00)	// Limpa R0 e R1 
+06:	MOV #0, R1		(D1, 00)
+
+mult_loop:
+08:	ADD R2, R0		(08)	    // Acumula R2 em R0, R3 vezes
+09:	JC 	mult_c		(FC, 0D)	// Esses dois saltos 
+0B:	JMP mult_dec	(FF, 0F)	// simulam o JNC (jump if not carry)
+
+mult_c:
+0D:	ADD #1, R1		(11, 01)	// Carry vai para MSByte
+
+mult_dec:
+0F:	ADD #-1, R3 	(13, FF)	// decrementa R3 
+11:	JNZ mult_loop 	(FE, 08)	// até chegar em zero
+
+13: JMP $			(FF, 13)	// Trava o programa aqui
+
+ad:dt
+-----
+00:D0
+01:00
+02:D1
+03:00
+04:D2
+05:04
+06:D3
+07:03
+08:08
+09:FC
+0A:0D
+0B:FF
+0C:0F
+0D:11
+0E:01
+0F:13
+10:FF
+11:FE
+12:08
+13:FF
+14:13
