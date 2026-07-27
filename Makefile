@@ -24,7 +24,7 @@ uvm: build/tb/uvm/simv
 sim: build/simv
 	cd build && ./simv -no_save -q
 
-sim_syn:
+sim_syn: syn/mapped.1.v
 	cd build && vcs -full64 -sverilog \
 	../tb/cpu_tb.sv \
 	../syn/mapped.1.v \

@@ -3,7 +3,12 @@ set_host_options -max_cores 4
 
 source ../scripts/createLib.tcl
 
-analyze -format sverilog [glob ../rtl/*]
+analyze -format sverilog ../rtl/0.bus_if.sv
+analyze -format sverilog ../rtl/1.ctrl.sv
+analyze -format sverilog ../rtl/1.regs.sv
+analyze -format sverilog ../rtl/1.ula.sv
+analyze -format sverilog ../rtl/2.cpu.sv
+
 elaborate      $TOP
 set_top_module $TOP
 
