@@ -1,4 +1,4 @@
-# uFe-8
+# uFe8
 8-bit CPU for didatic purpuses.
 
 # Requirements
