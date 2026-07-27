@@ -1,0 +1,11 @@
+Exemplo 1: Seq de fibonnacci
+
+fibo:
+0:	MOV		#1, R0 
+2:	MOV		#2, R1 
+
+loop:
+4:	MOV		R1, R2 
+5:	ADD		R0, R1 
+6:	MOV		R2, R0 
+7:	jmp		loop   
