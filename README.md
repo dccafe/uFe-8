@@ -1,5 +1,5 @@
 # uFe8
-8-bit CPU for didatic purpuses.
+8-bit CPU for didatic purposes.
 
 # Requirements
 Workflow is based on Synopsys tools: VCS, Verdi and FusionCompiler
