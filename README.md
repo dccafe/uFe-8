@@ -28,7 +28,7 @@ is the instruction, the second is the constant
 | `001 c ss dd` | `AND   Rs/#i,  Rd` | Rd &= Rs |
 | `010 c ss dd` | `XOR   Rs/#i,  Rd` | Rd ^= Rs |
 | `011 c ss dd` | ` OR   Rs/#i,  Rd` | Rd \|= Rs | 
-| `100 0 ss dd` | `LD   @Rs/@i,  Rd` | Rd = data from bus addr Rs or i  | 
+| `100 1 ss dd` | `LD   @Rs/@i,  Rd` | Rd = data from bus addr Rs or i  | 
 | `101 c ss dd` | `ST    Rs/#i, @Rd` | Source is written to bus addr Rd |
 | `110 c ss dd` | `MOV   Rs/#i,  Rd` | Rd = Rs | 
 | `111 1 11 00` | `JC    addr`       | PC = addr, if C = 1 |
